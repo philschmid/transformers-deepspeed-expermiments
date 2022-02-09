@@ -92,3 +92,5 @@ curl --request POST \
 * [DeepSpeed Launch function for `deepspeed`](https://github.com/microsoft/DeepSpeed/blob/dac9056e13ded1f931171c5f2461761c89fe2595/deepspeed/launcher/launch.py#L90)
 * [Interessting Issue for GPT-J](https://github.com/microsoft/DeepSpeed/issues/1332) 
 * [T5 Example](https://github.com/microsoft/DeepSpeed/pull/1711/files) 
+* [WIP Examples](https://github.com/microsoft/DeepSpeedExamples/tree/inference/General-TP-examples/inference/huggingface)
+* [WIP Examples PR](https://github.com/microsoft/DeepSpeedExamples/pull/144)
