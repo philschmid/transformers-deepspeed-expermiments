@@ -108,7 +108,7 @@ curl --request POST \
 
 ```bash
 python3 -m deepspeed.launcher.runner --num_gpus 4 run_mp_example.py
-python3 -m deepspeed.launcher.runner --num_gpus 3 t5_mp.py
+python3 -m deepspeed.launcher.runner --num_gpus 4 t5_mp.py
 ```
 
 

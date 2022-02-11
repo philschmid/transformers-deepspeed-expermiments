@@ -22,6 +22,8 @@ print(
 from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig
 
 pipe = pipeline("text2text-generation", model="google/t5-v1_1-small")
+# pipe = pipeline("text2text-generation", model="t5-3b")
+# pipe = pipeline("text2text-generation", model="t5-11b")
 
 # The inpjection_policy shows two things:
 #   1. which layer module we need to add Tensor-Parallelism
