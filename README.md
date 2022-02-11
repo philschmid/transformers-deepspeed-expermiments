@@ -104,6 +104,12 @@ curl --request POST \
 }'
 ```
 
+## MP Example
+
+```bash
+python3 -m deepspeed.launcher.runner --num_gpus 4 run_mp_example.py
+```
+
 
 ## Resources
 
@@ -115,3 +121,5 @@ curl --request POST \
 * [T5 Example](https://github.com/microsoft/DeepSpeed/pull/1711/files) 
 * [WIP Examples](https://github.com/microsoft/DeepSpeedExamples/tree/inference/General-TP-examples/inference/huggingface)
 * [WIP Examples PR](https://github.com/microsoft/DeepSpeedExamples/pull/144)
+
+
