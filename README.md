@@ -87,7 +87,8 @@ curl --request POST \
 ### IO Example with: `0MQ` and `Starlette
 
 ```bash
-python3 io/server.py
+cd io
+python3 server.py
 ```
 
 ```bash

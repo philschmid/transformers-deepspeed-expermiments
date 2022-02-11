@@ -17,8 +17,7 @@ pair_socket = context.socket(zmq.PAIR)
 pair_socket.bind(f"tcp://*:{server_port}")
 
 # start deepspeed server
-# python3 -m deepspeed.launcher.runner --num_gpus 2 io/inference.py
-subprocess.Popen([sys.executable,"-u", "-m", "deepspeed.launcher.runner", "--num_gpus", "2", "io/inference.py"])
+subprocess.Popen([sys.executable,"-u", "-m", "deepspeed.launcher.runner", "--num_gpus", "2", "inference.py"])
 
 
 client_conntected = False
