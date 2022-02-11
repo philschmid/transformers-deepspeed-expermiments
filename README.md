@@ -40,12 +40,21 @@ cd ..
 python3 -m deepspeed.launcher.runner --num_gpus 2 run_infernence_gpt-neo.py
 ```
 
+## Calculate GPU Memory needed for Model
+
+Number Parameter * 4 / Number GPUs + 2-3GB (Kernel + GPU Memory) = GPU Memory needed per GPU needed
+
 ## Commands 
 
 1. check gpus
 ```bash
 nvidia-smi
 ```
+1. watch nvidia-smi
+```bash
+watch -n0.1 nvidia-smi
+```
+
 2. check deepspeed
 ```bash
 #ds_report
@@ -67,6 +76,11 @@ python3 -m deepspeed.launcher.runner --num_gpus 2 run_infernence_gpt-neo.py
 memory allocation test
 ```bash
 python3 -m deepspeed.launcher.runner --num_gpus 2 memory_allocation_test.py
+```
+
+gptj
+```bash
+python3 -m deepspeed.launcher.runner --num_gpus 4 gptj.py
 ```
 
 ## WIP: HTTP Example

@@ -1,5 +1,6 @@
 import os
 import torch
+import time
 import deepspeed
 import transformers
 
@@ -18,9 +19,7 @@ print(
 
 
 generator = pipeline('text-generation',
-                     model='EleutherAI/gpt-j-6B',
-                     #model='EleutherAI/gpt-neo-2.7B',
-                     device=local_rank)
+                     model='EleutherAI/gpt-j-6B')
 
 # print(
 #     f'({local_rank}) before deepspeed: {torch.cuda.memory_allocated()}, {torch.cuda.memory_cached()}'
@@ -32,5 +31,9 @@ generator.model = deepspeed.init_inference(generator.model,
                                            dtype=torch.float,
                                            replace_method='auto',
                                            replace_with_kernel_inject=True)
-string = generator("DeepSpeed is", do_sample=True, min_length=50)
+
+generator.device = torch.device(f'cuda:{local_rank}')
+
+
+string = generator("DeepSpeed is", min_length=50, max_length=65)
 print(string)
