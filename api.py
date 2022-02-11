@@ -29,13 +29,13 @@ def generate(payload:Payload):
     print(payload)
     return generator(payload.inputs, max_length=100)
 
-if not torch.distributed.is_initialized() or torch.distributed.get_rank() == 0:
-    print(f'initiating server on rank: {local_rank}')
-    uvicorn.run(
-        app, 
-        host="0.0.0.0", port=8500, 
-        log_level="info", 
-        workers=1
-    )
+# if not torch.distributed.is_initialized() or torch.distributed.get_rank() == 0:
+print(f'initiating server on rank: {local_rank}')
+uvicorn.run(
+    app, 
+    host="0.0.0.0", port=8500+local_rank, 
+    log_level="info", 
+    workers=1
+)
 
 # here we lose the second half of the model  

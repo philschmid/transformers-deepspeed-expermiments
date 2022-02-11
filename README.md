@@ -77,12 +77,32 @@ python3 -m deepspeed.launcher.runner --num_gpus 2 api.py
 
 ```bash
 curl --request POST \
-   --url http://localhost:8500/gen \
+   --url http://localhost:8500/ \
    --header 'Content-Type: application/json' \
    --data '{
  "inputs":"Deepspeed is"
  }'
 ```
+
+### IO Example with: `0MQ` and `Starlette
+
+```bash
+python3 io/server.py
+```
+
+```bash
+curl --request POST \
+  --url http://localhost:8500/ \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"inputs": "Hugging Face can do",
+	"paramters": {
+		"min_length": 75,
+		"max_length": 250
+	}
+}'
+```
+
 
 ## Resources
 
