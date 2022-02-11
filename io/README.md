@@ -7,7 +7,7 @@ The inference code is located in [inference.py](inference.py) and the webservice
 The communication looks like that:
 
 
-![Model parallelism](Model parallelism.png)
+![Model parallelism](model-parallelism.png)
 
 
 ## Getting Started
