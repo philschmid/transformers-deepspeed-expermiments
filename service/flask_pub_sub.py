@@ -57,7 +57,7 @@ def background_predict(data):
     res = generator(payload)
     return res
 
-@app.route('/', methods = ['GET', 'POST', 'DELETE'])
+@app.route('/', methods = ['POST'])
 def main():
     try:
         req = request.json["inputs"]
