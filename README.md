@@ -29,15 +29,32 @@ pip install transformers==4.15.0
 sudo apt install libaio-dev
 pip install triton==1.0.0
 git clone https://github.com/microsoft/DeepSpeed
+# mkdir deepspeed/ops/transformer_inference
 cd DeepSpeed
-mkdir deepspeed/ops/transformer_inference
 DS_BUILD_TRANSFORMER_INFERENCE=1 DS_BUILD_UTILS=1 pip install -e . --global-option="build_ext" --global-option="-j8" --no-cache -v --disable-pip-version-check 2>&1 | tee build.log
 cd ..
 ```
-/home/ubuntu/transformers-deepspeed/DeepSpeed/build/lib.linux-x86_64-3.8/deepspeed/ops/transformer_inference/transformer_inference_op.cpython-38-x86_64-linux-gnu.so
+
 2. test script
 ```bash
 python3 -m deepspeed.launcher.runner --num_gpus 2 run_infernence_gpt-neo.py
+```
+
+---
+
+remove cuda 
+
+```bash
+sudo apt-get --purge remove "*cublas*" "cuda*" "nsight*" 
+sudo apt-get --purge remove "*nvidia*"
+sudo rm -rf /usr/local/cuda*
+
+```
+
+## Run docker container
+
+```bash
+docker run --gpus all -ti -p 5000:5000 deepspeed/deepspeed:latest_torch111
 ```
 
 ## Calculate GPU Memory needed for Model
@@ -58,7 +75,7 @@ watch -n0.1 nvidia-smi
 2. check deepspeed
 ```bash
 #ds_report
-python3 -m deepspeed.env_report
+python -m deepspeed.env_report
 ```
 
 ## Working examples
@@ -81,6 +98,7 @@ python3 -m deepspeed.launcher.runner --num_gpus 2 memory_allocation_test.py
 gptj
 ```bash
 python3 -m deepspeed.launcher.runner --num_gpus 4 gptj.py
+deepspeed --num_gpus 4 gptj.py
 ```
 
 ## WIP: HTTP Example
@@ -121,8 +139,8 @@ curl --request POST \
 ## MP Example
 
 ```bash
-python3 -m deepspeed.launcher.runner --num_gpus 4 run_mp_example.py
-python3 -m deepspeed.launcher.runner --num_gpus 4 t5_mp.py
+python -m deepspeed.launcher.runner --num_gpus 4 run_mp_example.py
+python -m deepspeed.launcher.runner --num_gpus 8 t5_mp.py
 ```
 
 
