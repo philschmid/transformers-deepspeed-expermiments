@@ -55,6 +55,7 @@ print("deepspeed init done")
 
 def background_predict(data):
     res = generator(payload)
+    return res
 
 @app.route('/', methods = ['GET', 'POST', 'DELETE'])
 def main():
