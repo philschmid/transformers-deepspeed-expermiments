@@ -25,7 +25,7 @@ curl --request POST \
   --header 'Content-Type: application/json' \
   --data '{
 	"inputs": "Hugging Face can do",
-	"paramters": {
+	"parameters": {
 		"min_length": 75,
 		"max_length": 250
 	}
