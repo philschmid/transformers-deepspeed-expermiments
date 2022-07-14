@@ -75,6 +75,7 @@ if __name__ == "__main__":
         threading.Thread(target=lambda: app.run(host=host_name, port=port, debug=False, processes=1, use_reloader=False)).start()
     # warm up
     print(generator("i am a test"))
+    # adde serverloop from nico here with dynamic batching
     while True: 
         data = sub.recv_pyobj()
         port, payload =data
@@ -84,3 +85,4 @@ if __name__ == "__main__":
             pair_sender.connect(f"tcp://127.0.0.1:{port}")
             pair_sender.send_pyobj(res)
             pair_sender.disconnect(f"tcp://127.0.0.1:{port}")
+
