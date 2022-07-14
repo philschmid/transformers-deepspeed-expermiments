@@ -15,9 +15,9 @@ print( f"***************** Creating model in RANK ({local_rank}) with WORLD_SIZE
 #### run command
 # torchrun --standalone --nnodes=1 --nproc_per_node=2 test.py
 #### hey example
-# hey http://localhost:23336
-
-
+# hey -n 100 -m POST -H 'Content-Type: application/json' -d '{	"inputs": "is multiprocessing a valid"}' http://localhost:5000
+# curl --request POST http://localhost:5000 --header 'Content-Type: application/json'  -d '{"inputs": "is multiprocessing a valid"}'
+  
 data = 'foo'
 host_name = "0.0.0.0"
 port = 5000
@@ -40,6 +40,7 @@ def background_predict(data):
     q, payload= data
     print("start")
     print(payload)
+    time.sleep(10)
     res = payload.upper()
     if local_rank == 0:
         q.put(res)

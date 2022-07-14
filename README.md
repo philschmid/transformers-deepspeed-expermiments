@@ -40,6 +40,8 @@ cd ..
 python3 -m deepspeed.launcher.runner --num_gpus 2 run_infernence_gpt-neo.py
 ```
 
+DS_BUILD_TRANSFORMER_INFERENCE=1 DS_BUILD_UTILS=1 pip install deepspeed --global-option="build_ext" --global-option="-j8"
+
 ---
 
 remove cuda 
@@ -55,7 +57,7 @@ sudo rm -rf /usr/local/cuda*
 
 ```bash
 docker run --gpus all -ti -p 5000:5000 deepspeed/deepspeed:latest_torch111
-```
+``` 
 
 ## Calculate GPU Memory needed for Model
 
